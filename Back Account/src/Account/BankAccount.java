@@ -45,6 +45,6 @@ public class BankAccount {
                 "accountNumber=" + accountNumber +
                 ", accountOwner='" + accountOwner + '\'' +
                 ", balance = R$" + balance +
-                '}';
+                "}\n";
     }
 }

@@ -30,7 +30,6 @@ public class BussinesAccount extends BankAccount{
     @Override
     public void Withdraw(double amount) {
         balance -= amount;
-
     }
 
     public void loan(double amount){

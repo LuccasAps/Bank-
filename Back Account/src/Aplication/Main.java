@@ -146,6 +146,7 @@ public class Main {
                         } else {
                             index2 = -1;
                         }
+
                     }
 
                     System.out.println("Digite o novo nome");

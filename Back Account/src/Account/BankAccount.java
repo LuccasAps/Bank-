@@ -40,6 +40,7 @@ public class BankAccount {
     }
     public void Withdraw(double withdraw) {
         this.balance = this.balance - withdraw - 5;
+
     }
 
     public String toString() {

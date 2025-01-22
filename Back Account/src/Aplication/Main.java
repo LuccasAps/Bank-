@@ -3,6 +3,7 @@ import Account.BankAccount;
 import Account.BussinesAccount;
 import Account.NormalAccount;
 
+import java.awt.image.BandCombineOp;
 import java.util.Scanner;
 import java.util.Locale;
 import java.util.ArrayList;
@@ -48,6 +49,7 @@ public class Main {
                             if(lista.get(i).getAccountNumber() == accountNumber)
                             {
                                 index = i;
+                                break;
                             }
                             else {
                                 index = -1;
@@ -63,6 +65,7 @@ public class Main {
                             if(lista.get(i).getAccountNumber() == accountNumber)
                             {
                                 index = i;
+                                break;
                             }
                             else {
                                 index = -1;
@@ -106,6 +109,7 @@ public class Main {
                             if(lista.get(i).getAccountNumber() == accountNumber)
                             {
                                 index = i;
+                                break;
                             }
                             else {
                                 index = -1;
@@ -149,7 +153,6 @@ public class Main {
                             index2 = -1;
                         }
                     }
-
                     System.out.println("Digite o novo nome");
                     String nome = sc.next();
                     lista.get(index2).setAccountOwner(nome);
@@ -176,6 +179,7 @@ public class Main {
                     for(int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getAccountNumber() == numeroConta) {
                             index3 = i;
+                            break;
                         } else {
                             index3 = -1;
                         }
@@ -200,6 +204,7 @@ public class Main {
                     for(int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getAccountNumber() == numeroConta2) {
                             index4 = i;
+                            break;
                         } else {
                             index4 = -1;
                         }

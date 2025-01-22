@@ -10,31 +10,6 @@ public class NormalAccount extends BankAccount {
     }
 
     @Override
-    public int getAccountNumber() {
-        return super.getAccountNumber();
-    }
-
-    @Override
-    public String getAccountOwner() {
-        return super.getAccountOwner();
-    }
-
-    @Override
-    public void setAccountOwner(String accountOwner) {
-        super.setAccountOwner(accountOwner);
-    }
-
-    @Override
-    public double getBalance() {
-        return super.getBalance();
-    }
-
-    @Override
-    public void Deposit(double deposit) {
-        super.Deposit(deposit);
-    }
-
-    @Override
     public String toString() {
         return super.toString();
     }

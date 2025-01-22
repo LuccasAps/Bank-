@@ -1,12 +1,10 @@
 package Account;
 
-public class BankAccount {
+public abstract class BankAccount {
     //implementar cpf nas contas!!!
     protected int accountNumber;
     protected String accountOwner;
     protected double balance = 0;
-
-
 
     public BankAccount(int accountNumber, String accountOwner, double firstdeposit) {
         this.accountNumber = accountNumber;
@@ -38,9 +36,7 @@ public class BankAccount {
     public void Deposit(double deposit) {
         this.balance += deposit;
     }
-    public void Withdraw(double withdraw) {
-        this.balance = this.balance - withdraw - 5;
-    }
+    public abstract void Withdraw(double withdraw);
 
     public String toString() {
         return "BankAccount\n{" +

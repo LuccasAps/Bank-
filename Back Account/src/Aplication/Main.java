@@ -1,6 +1,7 @@
 package Aplication;
 import Account.BankAccount;
 import Account.BussinesAccount;
+import Account.NormalAccount;
 
 import java.util.Scanner;
 import java.util.Locale;
@@ -41,7 +42,7 @@ public class Main {
                         System.out.println("Digite o valor do deposito: ");
                         double depositAmount = sc.nextInt();
 
-                        lista.add(new BankAccount(accountNumber, accountOwner, depositAmount));
+                        lista.add(new NormalAccount(accountNumber, accountOwner, depositAmount));
                         int index = 0;
                         for(int i = 0; i < lista.size(); i++) {
                             if(lista.get(i).getAccountNumber() == accountNumber)
@@ -56,7 +57,7 @@ public class Main {
                     }
                     else{
 
-                        lista.add(new BankAccount(accountNumber, accountOwner));
+                        lista.add(new NormalAccount(accountNumber, accountOwner));
                         int index = 0;
                         for(int i = 0; i < lista.size(); i++) {
                             if(lista.get(i).getAccountNumber() == accountNumber)
@@ -114,7 +115,7 @@ public class Main {
                     }
                     else{
 
-                        lista.add(new BankAccount(accountNumber, accountOwner, limite));
+                        lista.add(new BussinesAccount(accountNumber, accountOwner, limite));
                         int index = 0;
                         for(int i = 0; i < lista.size(); i++) {
                             if(lista.get(i).getAccountNumber() == accountNumber)
@@ -143,6 +144,7 @@ public class Main {
                     for(int i = 0; i < lista.size(); i++) {
                         if (lista.get(i).getAccountNumber() == numAccount) {
                             index2 = i;
+                            break;
                         } else {
                             index2 = -1;
                         }

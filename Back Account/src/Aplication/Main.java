@@ -2,6 +2,7 @@ package Aplication;
 import Account.BankAccount;
 import Account.BussinesAccount;
 import Account.NormalAccount;
+import Services.BankAccountServices;
 
 import java.util.Scanner;
 import java.util.Locale;
@@ -23,14 +24,14 @@ public class Main {
                     break;
 
                 case 1:
-
                     System.out.println("Enter a number account:");
                     int accountNumber = sc.nextInt();
 
-                    while(VerificaConta(lista,accountNumber)){
+                    while(BankAccountServices.VerificaConta(lista,accountNumber)){
                         System.out.println("Id ja registrado, digite novamente: ");
                         accountNumber = sc.nextInt();
                     }
+
                     System.out.println("Enter a name of owner account:");
                     String accountOwner = sc.next();
 
@@ -43,46 +44,26 @@ public class Main {
                         double depositAmount = sc.nextInt();
 
                         lista.add(new NormalAccount(accountNumber, accountOwner, depositAmount));
-                        int index = 0;
-                        for(int i = 0; i < lista.size(); i++) {
-                            if(lista.get(i).getAccountNumber() == accountNumber)
-                            {
-                                index = i;
-                                break;
-                            }
-                            else {
-                                index = -1;
-                            }
-                        }
-                        System.out.println(lista.get(index).toString());
+
+                        System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, accountNumber)).toString());
                     }
                     else{
 
                         lista.add(new NormalAccount(accountNumber, accountOwner));
-                        int index = 0;
-                        for(int i = 0; i < lista.size(); i++) {
-                            if(lista.get(i).getAccountNumber() == accountNumber)
-                            {
-                                index = i;
-                                break;
-                            }
-                            else {
-                                index = -1;
-                            }
-                        }
-                        System.out.println(lista.get(index).toString());
+
+                        System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, accountNumber)).toString());
                     }
                     break;
 
                 case 2:
-
                     System.out.println("Enter a number account:");
                     accountNumber = sc.nextInt();
 
-                    while(VerificaConta(lista,accountNumber)){
+                    while(BankAccountServices.VerificaConta(lista,accountNumber)){
                         System.out.println("Id ja registrado, digite novamente: ");
                         accountNumber = sc.nextInt();
                     }
+
                     System.out.println("Enter a name of owner account:");
                     accountOwner = sc.next();
 
@@ -103,64 +84,35 @@ public class Main {
                         double depositAmount = sc.nextInt();
 
                         lista.add(new BussinesAccount(accountNumber, accountOwner, depositAmount, limite));
-                        int index = 0;
-                        for(int i = 0; i < lista.size(); i++) {
-                            if(lista.get(i).getAccountNumber() == accountNumber)
-                            {
-                                index = i;
-                                break;
-                            }
-                            else {
-                                index = -1;
-                            }
-                        }
-                        System.out.println(lista.get(index).toString());
+
+                        System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, accountNumber)).toString());
                     }
                     else{
 
                         lista.add(new BussinesAccount(accountNumber, accountOwner, limite));
-                        int index = 0;
-                        for(int i = 0; i < lista.size(); i++) {
-                            if(lista.get(i).getAccountNumber() == accountNumber)
-                            {
-                                index = i;
-                            }
-                            else {
-                                index = -1;
-                            }
-                        }
-                        System.out.println(lista.get(index).toString());
+
+                        System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, accountNumber)).toString());
                     }
                     break;
 
                 case 3:
-
                     int numAccount;
                     System.out.println("Enter a number account:");
                     numAccount = sc.nextInt();
 
-                    while (!VerificaNum(lista,numAccount)){
+                    while (!BankAccountServices.VerificaNum(lista,numAccount)){
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numAccount = sc.nextInt();
                     }
-                    int index2 = 0;
-                    for(int i = 0; i < lista.size(); i++) {
-                        if (lista.get(i).getAccountNumber() == numAccount) {
-                            index2 = i;
-                            break;
-                        } else {
-                            index2 = -1;
-                        }
-                    }
+
                     System.out.println("Digite o novo nome");
                     String nome = sc.next();
-                    lista.get(index2).setAccountOwner(nome);
+                    lista.get(BankAccountServices.RetornaIndex(lista, numAccount)).setAccountOwner(nome);
 
-                    System.out.println(lista.get(index2).toString());
+                    System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, numAccount)).toString());
                     break;
 
                 case 4:
-
                     for (BankAccount bankAccount : lista) {
                         System.out.println(bankAccount.toString());
                     }
@@ -170,24 +122,16 @@ public class Main {
                     System.out.println("Digite o numero da conta para o deposito:");
                     int numeroConta = sc.nextInt();
 
-                    while (!VerificaNum(lista,numeroConta)){
+                    while (!BankAccountServices.VerificaNum(lista,numeroConta)){
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numeroConta = sc.nextInt();
                     }
-                    int index3 = 0;
-                    for(int i = 0; i < lista.size(); i++) {
-                        if (lista.get(i).getAccountNumber() == numeroConta) {
-                            index3 = i;
-                            break;
-                        } else {
-                            index3 = -1;
-                        }
-                    }
+
                     System.out.println("Digite o valor do deposito:");
                     int depositAmount = sc.nextInt();
-                    lista.get(index3).Deposit(depositAmount);
+                    lista.get(BankAccountServices.RetornaIndex(lista, numeroConta)).Deposit(depositAmount);
 
-                    System.out.println(lista.get(index3).toString());
+                    System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, numeroConta)).toString());
 
                     break;
 
@@ -195,36 +139,20 @@ public class Main {
                     System.out.println("Digite a o numero da conta para o saque:");
                     int numeroConta2 = sc.nextInt();
 
-                    while (!VerificaNum(lista,numeroConta2)){
+                    while (!BankAccountServices.VerificaNum(lista,numeroConta2)){
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numeroConta2 = sc.nextInt();
                     }
-                    int index4 = 0;
-                    for(int i = 0; i < lista.size(); i++) {
-                        if (lista.get(i).getAccountNumber() == numeroConta2) {
-                            index4 = i;
-                            break;
-                        } else {
-                            index4 = -1;
-                        }
-                    }
-
                     System.out.println("Digite o valor do saque:");
                     int saqueAmount = sc.nextInt();
 
-                    double balance = lista.get(index4).getBalance();
-
-                    balance = balance - 5;
-
-                    System.out.println(balance);
-
-                    while(saqueAmount > balance) {
+                    while(saqueAmount > lista.get(BankAccountServices.RetornaIndex(lista, numeroConta2)).getBalance() - 5) {
                             System.out.println("O valor de saque excede o montante existente na conta, digite novamente: ");
                             saqueAmount = sc.nextInt();
                     }
-                    lista.get(index4).Withdraw(saqueAmount);
+                    lista.get(BankAccountServices.RetornaIndex(lista, numeroConta2)).Withdraw(saqueAmount);
 
-                    System.out.println(lista.get(index4).toString());
+                    System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, numeroConta2)).toString());
 
                     break;
 
@@ -234,22 +162,5 @@ public class Main {
 
         }while(num != 0);
         sc.close();
-    }
-    public static boolean VerificaConta(List<BankAccount> lista, int accountnum){
-        BankAccount account = lista.stream().filter(x -> x.getAccountNumber() == accountnum).findFirst().orElse(null);
-        return account != null;
-    }
-
-    public static boolean VerificaNum(List<BankAccount> lista, int numAccount){
-        int k = 0;
-        boolean flag = false;
-        while(k < lista.size()) {
-            if (lista.get(k).getAccountNumber() == numAccount) {
-                flag = true;
-                break;
-            }
-            k++;
-        }
-        return flag;
     }
 }

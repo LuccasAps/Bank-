@@ -1,6 +1,6 @@
 package Account;
 
-public abstract class BankAccount {
+public abstract class BankAccount implements AccountInterface{
     //implementar cpf nas contas!!!
     protected int accountNumber;
     protected String accountOwner;
@@ -33,10 +33,11 @@ public abstract class BankAccount {
     public double getBalance() {
         return balance;
     }
+
     public void Deposit(double deposit) {
         this.balance += deposit;
     }
-    public abstract void Withdraw(double withdraw);
+
 
     public String toString() {
         return "BankAccount\n{" +

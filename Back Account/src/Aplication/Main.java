@@ -152,7 +152,6 @@ public class Main {
                     }
                     lista.get(BankAccountServices.RetornaIndex(lista, numeroConta2)).Withdraw(saqueAmount);
 
-
                     System.out.println(lista.get(BankAccountServices.RetornaIndex(lista, numeroConta2)).toString());
 
                     break;

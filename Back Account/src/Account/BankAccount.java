@@ -1,6 +1,6 @@
 package Account;
 
-public abstract class BankAccount implements AccountInterface{
+public abstract class BankAccount implements AccountInterface, Comparable<BankAccount> {
     //implementar cpf nas contas!!!
     protected int accountNumber;
     protected String accountOwner;
@@ -38,11 +38,14 @@ public abstract class BankAccount implements AccountInterface{
         this.balance += deposit;
     }
 
+    public int compareTo(BankAccount other) {
+        return accountOwner.compareTo(other.accountOwner);
+    }
+
 
     public String toString() {
-        return "BankAccount\n{" +
-                "accountNumber=" + accountNumber +
-                ", accountOwner='" + accountOwner + '\'' +
+        return "AccountNumber = " + accountNumber +
+                ", accountOwner = " + accountOwner +
                 ", balance = R$" + balance;
     }
 }

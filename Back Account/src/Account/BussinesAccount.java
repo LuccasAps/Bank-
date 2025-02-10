@@ -2,34 +2,29 @@ package Account;
 
 public class BussinesAccount extends BankAccount{
 
-    private Double loanLimit;
-    private Double loanbalance = 0.0;
+    private double loanLimit;
+    private double loanbalance = 0.0;
 
-    public BussinesAccount(int accountNumber, String accountOwner, double firstdeposit, Double loanLimit) {
+    public BussinesAccount(int accountNumber, String accountOwner, double firstdeposit, double loanLimit) {
         super(accountNumber, accountOwner, firstdeposit);
         this.loanLimit = loanLimit;
     }
 
-    public BussinesAccount(int accountNumber, String accountOwner, Double loanLimit) {
+    public BussinesAccount(int accountNumber, String accountOwner, double loanLimit) {
         super(accountNumber, accountOwner);
         this.loanLimit = loanLimit;
     }
 
-    public Double getLoanLimit() {
+    public double getLoanLimit() {
         return loanLimit;
     }
 
-    public void setLoanLimit(Double loanLimit) {
+    public void setLoanLimit(double loanLimit) {
         this.loanLimit = loanLimit;
     }
 
     public double getLoanbalance() {
         return loanbalance;
-    }
-
-    @Override
-    public void Withdraw(double amount) {
-        balance -= amount;
     }
 
     public void loan(double amount){
@@ -43,7 +38,13 @@ public class BussinesAccount extends BankAccount{
     }
 
     @Override
+    public void Withdraw(double amount) {
+        balance -= amount;
+    }
+
+
+    @Override
     public String toString() {
-        return super.toString() + ", Limite de Emprestimo = R$" + loanLimit + ", Debito de Emprestimo = R$" + loanbalance + "}";
+        return "Bussines Account " + super.toString() + ", Limite de Emprestimo = R$" + loanLimit + ", Debito de Emprestimo = R$" + loanbalance;
         }
 }

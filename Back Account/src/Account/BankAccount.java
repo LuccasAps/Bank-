@@ -21,7 +21,6 @@ public abstract class BankAccount implements AccountInterface, Comparable<BankAc
         return accountNumber;
     }
 
-
     public String getAccountOwner() {
         return accountOwner;
     }

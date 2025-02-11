@@ -45,6 +45,6 @@ public class BussinesAccount extends BankAccount{
 
     @Override
     public String toString() {
-        return "Bussines Account " + super.toString() + ", Limite de Emprestimo = R$" + loanLimit + ", Debito de Emprestimo = R$" + loanbalance;
+        return "Bussines Account: " + super.toString() + ", Limite de Emprestimo = R$" + loanLimit + ", Debito de Emprestimo = R$" + loanbalance;
         }
 }

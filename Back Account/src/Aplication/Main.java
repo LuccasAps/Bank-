@@ -4,7 +4,12 @@ import Account.BussinesAccount;
 import Account.NormalAccount;
 import Services.BankAccountServices;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
+import java.util.Scanner;
+import java.util.Collections;
+
 
 public class Main {
     public static void main(String[] args) {
@@ -40,20 +45,21 @@ public class Main {
                     if (choice == 'y'){
                         System.out.println("Digite o valor do deposito: ");
                         double depositAmount = sc.nextInt();
-
-                        Contas.add(new NormalAccount(NumeroConta, accountOwner, depositAmount));
+                        BankAccount bacc = new NormalAccount(NumeroConta, accountOwner, depositAmount);
+                        Contas.add(bacc);
 
                         System.out.println("Conta Criada com sucesso!");
 
-                        //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, NumeroConta)).toString());
+                        System.out.println(bacc);
                     }
                     else{
 
-                        Contas.add(new NormalAccount(NumeroConta, accountOwner));
+                        BankAccount bacc = new NormalAccount(NumeroConta, accountOwner);
+                        Contas.add(bacc);
 
                         System.out.println("Conta Criada com sucesso!");
 
-                        //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, NumeroConta)).toString());
+                        System.out.println(bacc);
                     }
                     break;
 
@@ -81,24 +87,40 @@ public class Main {
 
                     choice = sc.next().charAt(0);
 
+
                     if (choice == 'y'){
                         System.out.println("Digite o valor do deposito: ");
                         double depositAmount = sc.nextInt();
 
-                        Contas.add(new BussinesAccount(accountNumber, accountOwner, depositAmount, limite));
+                        BankAccount bacc = new BussinesAccount(accountNumber, accountOwner, limite, depositAmount);
+                        Contas.add(bacc);
 
                         System.out.println("Conta Criada com sucesso!");
 
-                        //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, accountNumber)).toString());
+                        System.out.println(bacc);
                     }
                     else{
 
-                        Contas.add(new BussinesAccount(accountNumber, accountOwner, limite));
+                        BankAccount bacc = new BussinesAccount(accountNumber, accountOwner, limite);
+                        Contas.add(bacc);
 
                         System.out.println("Conta Criada com sucesso!");
+                        System.out.println(bacc);
 
-                        //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, accountNumber)).toString());
                     }
+                    /*int index2 = 0;
+                    for(int i = 0; i < Contas.size(); i++) {
+                        if(Contas.get(i).getAccountNumber() == accountNumber)
+                        {
+                            index2 = i;
+                            break;
+                        }
+                        else {
+                            index2 = -1;
+                        }
+                    }
+                    System.out.println(Contas.get(index2).toString());
+                    //System.out.println(Contas.get(index).toString());*/
                     break;
 
                 case 3:
@@ -113,9 +135,14 @@ public class Main {
 
                     System.out.println("Digite o novo nome");
                     String nome = sc.next();
-                    Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).setAccountOwner(nome);
 
+
+                    Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).setAccountOwner(nome);
                     System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).toString());
+
+
+                   System.out.println("Conta alterada com sucesso!");
+                    //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).toString());
                     break;
 
                 case 4:
@@ -138,7 +165,7 @@ public class Main {
                     int depositAmount = sc.nextInt();
                     Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta)).Deposit(depositAmount);
 
-                    System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta)).toString());
+                    System.out.println(Contas.get(RetornaIndex(Contas, numeroConta)).toString());
 
                     break;
 
@@ -170,5 +197,19 @@ public class Main {
 
         }while(num != 0);
         sc.close();
+    }
+
+    public static int RetornaIndex(List<BankAccount> lista, int numAccount){
+        int index;
+        for(index = 0; index < lista.size(); index++) {
+            if (lista.get(index).getAccountNumber() == numAccount)
+            {
+                return index;
+            }
+            else {
+                index = -1;
+            }
+        }
+        return index;
     }
 }

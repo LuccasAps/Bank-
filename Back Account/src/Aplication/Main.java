@@ -4,11 +4,7 @@ import Account.BussinesAccount;
 import Account.NormalAccount;
 import Services.BankAccountServices;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Locale;
-import java.util.Scanner;
-import java.util.Collections;
+import java.util.*;
 
 
 public class Main {
@@ -120,7 +116,7 @@ public class Main {
                         }
                     }
                     System.out.println(Contas.get(index2).toString());
-                    //System.out.println(Contas.get(index).toString());*/
+                    System.out.println(Contas.get(index).toString());*/
                     break;
 
                 case 3:
@@ -146,10 +142,9 @@ public class Main {
                     break;
 
                 case 4:
-                    Collections.sort(Contas);
-                    for (BankAccount bankAccount : Contas) {
-                        System.out.println(bankAccount.toString());
-                    }
+                    Contas.sort((p1, p2) -> p1.getAccountOwner().compareTo(p2.getAccountOwner()));
+                    //Contas.sort(Comparator.comparing(BankAccount::getAccountOwner));
+                    Contas.forEach(System.out::println);
                     break;
 
                 case 5:

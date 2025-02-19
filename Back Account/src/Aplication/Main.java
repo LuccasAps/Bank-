@@ -14,10 +14,10 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         List<BankAccount> Contas = new ArrayList<>();
         int num;
-        do{
+        do {
             System.out.println(" 0. Sair\n 1. Criar conta\n 2. Criar conta Empresarial\n 3. Alterar informações da conta\n 4. Listar contas\n 5. Depositar\n 6. Sacar\n");
             num = sc.nextInt();
-            switch (num){
+            switch (num) {
                 case 0:
                     break;
 
@@ -25,7 +25,7 @@ public class Main {
                     System.out.println("Enter a number account:");
                     int NumeroConta = sc.nextInt();
 
-                    while(BankAccountServices.VerificaConta(Contas,NumeroConta)){
+                    while (BankAccountServices.VerificaConta(Contas, NumeroConta)) {
                         System.out.println("Id ja registrado, digite novamente: ");
                         NumeroConta = sc.nextInt();
                     }
@@ -38,7 +38,7 @@ public class Main {
                     char choice;
                     choice = sc.next().toLowerCase().charAt(0);
 
-                    if (choice == 'y'){
+                    if (choice == 'y') {
                         System.out.println("Digite o valor do deposito: ");
                         double depositAmount = sc.nextInt();
                         BankAccount bacc = new NormalAccount(NumeroConta, accountOwner, depositAmount);
@@ -47,9 +47,7 @@ public class Main {
                         System.out.println("Conta Criada com sucesso!");
 
                         System.out.println(bacc);
-                    }
-                    else{
-
+                    } else {
                         BankAccount bacc = new NormalAccount(NumeroConta, accountOwner);
                         Contas.add(bacc);
 
@@ -63,7 +61,7 @@ public class Main {
                     System.out.println("Enter a number account:");
                     int accountNumber = sc.nextInt();
 
-                    while(BankAccountServices.VerificaConta(Contas,accountNumber)){
+                    while (BankAccountServices.VerificaConta(Contas, accountNumber)) {
                         System.out.println("Id ja registrado, digite novamente: ");
                         accountNumber = sc.nextInt();
                     }
@@ -74,9 +72,9 @@ public class Main {
                     double limite;
                     do {
                         System.out.println("Digite o limite de empresitmo desejado");
-                         limite = sc.nextDouble();
+                        limite = sc.nextDouble();
                     }
-                    while(limite > 10000.00);
+                    while (limite > 10000.00);
 
 
                     System.out.println("Você deseja fazer um primeiro deposito(y/n)?");
@@ -84,7 +82,7 @@ public class Main {
                     choice = sc.next().charAt(0);
 
 
-                    if (choice == 'y'){
+                    if (choice == 'y') {
                         System.out.println("Digite o valor do deposito: ");
                         double depositAmount = sc.nextInt();
 
@@ -94,8 +92,7 @@ public class Main {
                         System.out.println("Conta Criada com sucesso!");
 
                         System.out.println(bacc);
-                    }
-                    else{
+                    } else {
 
                         BankAccount bacc = new BussinesAccount(accountNumber, accountOwner, limite);
                         Contas.add(bacc);
@@ -124,7 +121,7 @@ public class Main {
                     System.out.println("Enter a number account:");
                     numAccount = sc.nextInt();
 
-                    while (!BankAccountServices.VerificaNum(Contas,numAccount)){
+                    while (!BankAccountServices.VerificaNum(Contas, numAccount)) {
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numAccount = sc.nextInt();
                     }
@@ -137,7 +134,7 @@ public class Main {
                     System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).toString());
 
 
-                   System.out.println("Conta alterada com sucesso!");
+                    System.out.println("Conta alterada com sucesso!");
                     //System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numAccount)).toString());
                     break;
 
@@ -151,7 +148,7 @@ public class Main {
                     System.out.println("Digite o numero da conta para o deposito:");
                     int numeroConta = sc.nextInt();
 
-                    while (!BankAccountServices.VerificaNum(Contas,numeroConta)){
+                    while (!BankAccountServices.VerificaNum(Contas, numeroConta)) {
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numeroConta = sc.nextInt();
                     }
@@ -160,7 +157,7 @@ public class Main {
                     int depositAmount = sc.nextInt();
                     Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta)).Deposit(depositAmount);
 
-                    System.out.println(Contas.get(RetornaIndex(Contas, numeroConta)).toString());
+                    System.out.println(Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta)).toString());
 
                     break;
 
@@ -168,16 +165,16 @@ public class Main {
                     System.out.println("Digite a o numero da conta para o saque:");
                     int numeroConta2 = sc.nextInt();
 
-                    while (!BankAccountServices.VerificaNum(Contas,numeroConta2)){
+                    while (!BankAccountServices.VerificaNum(Contas, numeroConta2)) {
                         System.out.println("Numero de conta inexistente, digite novamente: ");
                         numeroConta2 = sc.nextInt();
                     }
                     System.out.println("Digite o valor do saque:");
                     int saqueAmount = sc.nextInt();
 
-                    while(saqueAmount > Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta2)).getBalance() - 5) {
-                            System.out.println("O valor de saque excede o montante existente na conta, digite novamente: ");
-                            saqueAmount = sc.nextInt();
+                    while (saqueAmount > Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta2)).getBalance() - 5) {
+                        System.out.println("O valor de saque excede o montante existente na conta, digite novamente: ");
+                        saqueAmount = sc.nextInt();
                     }
                     Contas.get(BankAccountServices.RetornaIndex(Contas, numeroConta2)).Withdraw(saqueAmount);
 
@@ -187,24 +184,10 @@ public class Main {
                     break;
 
                 default:
-                        System.out.println("Opção Invalida");
+                    System.out.println("Opção Invalida");
             }
 
-        }while(num != 0);
+        } while (num != 0);
         sc.close();
-    }
-
-    public static int RetornaIndex(List<BankAccount> lista, int numAccount){
-        int index;
-        for(index = 0; index < lista.size(); index++) {
-            if (lista.get(index).getAccountNumber() == numAccount)
-            {
-                return index;
-            }
-            else {
-                index = -1;
-            }
-        }
-        return index;
     }
 }
